@@ -2,6 +2,7 @@
 
 module ModeloQytetet
 
+  #Tipos de sorpresa validos
   module TipoSorpresa
       PAGARCOBRAR= :Pagar_cobrar
       IRACASILLA= :Ir_a_Casilla

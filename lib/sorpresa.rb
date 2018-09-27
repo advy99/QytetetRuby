@@ -6,14 +6,17 @@ module ModeloQytetet
   
   class Sorpresa
     
+    #consultor de texto, tipo y valor
     attr_reader :texto,:tipo,:valor
     
+    #constructor basico
     def initialize(text, val, type)
       @texto = text
       @tipo = type
       @valor = val
     end
     
+    #Pasar una sorpresa a string
     def to_s
       return "Texto: #{@texto} \n Valor: #{@valor} \n Tipo: #{@tipo}"
     end

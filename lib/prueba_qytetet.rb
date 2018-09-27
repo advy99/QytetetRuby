@@ -6,12 +6,15 @@ require_relative "qytetet"
 module ModeloQytetet
   
     class PruebaQytetet
+        #definimos una instancia de Qytetet, que sera el juego
         @@juego = Qytetet.new
         
         def self.main
-            
+            #inicializamos las cartas del juego
             @@juego.inicializarCartasSorpresa()
             
+            
+            #Pruebas para mostrar cartas
             puts "Cartas positivas: \n "
             
             for sorpresa in sorpresas_positivas(@@juego.mazo)
@@ -42,6 +45,7 @@ module ModeloQytetet
             
         end
         
+        #funcion para mostrar cartas con valor > 0
         def self.sorpresas_positivas(sorpresas)
             
             sorpresas_positivas = Array.new
@@ -55,6 +59,7 @@ module ModeloQytetet
             return sorpresas_positivas
         end
         
+        #Cartas de tipo IrACasilla
         def self.sorpresas_ir_a_casilla(sorpresas)
             
             sorpresas_ir = Array.new
@@ -69,6 +74,7 @@ module ModeloQytetet
             
         end
         
+        #Cartas de tipo @argumento2
         def self.sorpresas_tipo(sorpresas, tipo_sorpresa)
             sorpresas_t = Array.new
             
