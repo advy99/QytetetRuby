@@ -1,17 +1,19 @@
 #encoding: utf-8
 
 require_relative "sorpresa"
+require_relative "tablero"
 
 module ModeloQytetet
    
     class Qytetet
         
         #consultor de mazo
-        attr_reader :mazo
+        attr_reader :mazo,:tablero
         
         #En la creacion, asignamos al mazo un Array vacio
         def initialize
             @mazo = Array.new
+            @tablero = Tablero.new
         end
         
         #Inicializamos el mazo con sorpresas
@@ -44,7 +46,7 @@ module ModeloQytetet
 
             @mazo << Sorpresa.new("Te hemos pillado con chanclas y calcetines," +
                     "lo sentimos, ¡debes ir a la carcel!",
-                     9, TipoSorpresa::IRACASILLA);
+                     @tablero.carcel.numero_casilla, TipoSorpresa::IRACASILLA);
 
             @mazo << Sorpresa.new("Has tenido suerte, vas a cobrar sin trabajar." +
                     "Ve a la casilla de salida.", 0, TipoSorpresa::IRACASILLA);
@@ -52,6 +54,14 @@ module ModeloQytetet
             @mazo << Sorpresa.new("Encuentras un atajo en el camino.",
                     18, TipoSorpresa::IRACASILLA);
         end
+        
+        
+        private
+        
+        def inicializar_tablero
+            @tablero = Tablero.new
+        end
+        
         
     end
 

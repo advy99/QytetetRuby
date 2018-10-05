@@ -1,5 +1,8 @@
 #encoding: utf-8
 
+
+#Antonio David Villegas Yeguas
+
 require_relative "sorpresa"
 require_relative "qytetet"
 
@@ -41,6 +44,8 @@ module ModeloQytetet
                 
                 puts "\nFIN CARTAS #{tipo} \n\n"
             end
+            
+            
             
             
         end
@@ -89,6 +94,8 @@ module ModeloQytetet
             return sorpresas_t
             
         end
+        
+        
         
     end
     
