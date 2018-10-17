@@ -19,17 +19,17 @@ module ModeloQytetet
         
         
         def to_s
-            texto = ""
+            texto = "\n\nTablero: \n"
             
             for c in @casillas
                 texto += c.to_s
             end
             
+            texto += "\n\n"
+            
             return texto
         end
-        
-        private
-        
+                
         def inicializar
             @casillas = Array.new
             
@@ -95,6 +95,37 @@ module ModeloQytetet
             @carcel = @casillas[9]
 
         end
+        
+        def es_casilla_carcel (numero_casilla) #boolean
+            raise NotImplementedError
+        end
+        
+        def obtener_casilla_final (casilla, desplazamiento) # casilla
+            raise NotImplementedError
+        end
+        
+        def obtener_casilla_numero (numero_casilla) # casilla
+            raise NotImplementedError
+        end
+        
+        def to_s()
+     
+            texto = "\n"
+
+            for s in casillas
+                texto += s.to_s
+            
+
+            texto += "\n\n"
+
+            end
+            
+            return texto
+
+        end      
+        
+                
+        private :inicializar
         
     end
 end

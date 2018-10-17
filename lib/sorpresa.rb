@@ -21,7 +21,7 @@ module ModeloQytetet
       return "Texto: #{@texto} \n Valor: #{@valor} \n Tipo: #{@tipo}"
     end
     
-    
+        
   end
 
 end
