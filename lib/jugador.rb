@@ -17,7 +17,7 @@ module ModeloQytetet
             @propiedades = Array.new
             @casilla_actual = c_inicio
             
-            @carta_libertad
+            @carta_libertad = nil
         end
         
         def cancelar_hipoteca(titulo) # : boolean
@@ -29,7 +29,14 @@ module ModeloQytetet
         end
         
         def cuantas_casas_hoteles_tengo() # : int
-            raise NotImplementedError
+            
+            total = 0
+            
+            for p in @propiedades
+                total += p.num_casas + p.num_hoteles;
+            end
+            
+            return total
         end
         
         def debo_pagar_alquiler() # : boolean
@@ -37,7 +44,9 @@ module ModeloQytetet
         end
         
         def devolver_carta_libertad() # : Sorpresa
-            raise NotImplementedError
+            carta_l = @carta_libertad
+            @carta_libertad = nil
+            return carta_l
         end
         
         def edificar_casa(titulo) # : boolean
@@ -53,7 +62,15 @@ module ModeloQytetet
         end
         
         def es_de_mi_propiedad(titulo) # : boolean
-            raise NotImplementedError
+            lo_es = false
+            
+            for t in @propiedades and not lo_es
+                if t == titulo
+                    lo_es = true
+                end
+            end
+            
+            return lo_es
         end
         
         def estoy_en_calle_libre() # : boolean
@@ -69,15 +86,36 @@ module ModeloQytetet
         end
         
         def modificar_saldo(cantidad) # : int
-            raise NotImplementedError
+            @saldo = @saldo + cantidad
+            
+            return @saldo
         end
         
         def obtener_capital() # : int
-            raise NotImplementedError
+            capital = @saldo
+            
+            for p in propiedades
+                capital += p.precio_compra + p.precio_edificar*(p.num_casas+p.num_hoteles)
+            end
+            
+            if p.hipotecada
+                capital -= p.hipoteca_base
+            end
+            
+            return capital
+
         end
         
         def obtener_propiedades(hipotecada) # : TituloPropiedad[0..*]
-            raise NotImplementedError
+            pro = Array.new
+            
+            for p in @propiedades
+                if p.hipotecada == hipotecada
+                    pro << p
+                end
+            end
+            
+            return p
         end
         
         def pagar_alquiler() # : void
@@ -85,7 +123,7 @@ module ModeloQytetet
         end
         
         def pagar_impuesto() # : void
-            raise NotImplementedError
+            @saldo = @saldo - @casilla_actual.coste
         end
         
         def pagar_libertad(cantidad) # : void
@@ -93,11 +131,11 @@ module ModeloQytetet
         end
         
         def tengo_carta_libertad() # : boolean
-            raise NotImplementedError
+            return @cartal_libertad != nil
         end
         
         def tengo_saldo(cantidad) # : boolean
-            raise NotImplementedError
+            return @saldo >= cantidad
         end
         
         def vender_propiedad(casilla) # : boolean
@@ -132,6 +170,10 @@ module ModeloQytetet
             return texto
         end
        
+        
+        def <=>(otroJugador)
+            otroJugador.obtener_capital <=> obtener_capital
+        end
                 
         private :eliminar_de_mis_propiedades, :es_de_mi_propiedad,
                 :tengo_saldo

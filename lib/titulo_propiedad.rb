@@ -91,8 +91,7 @@ module ModeloQytetet
                     "\t Precio para edificar: " + @precio_edificar.to_s + "\n" +
                     "\t Numero de casas: " + @num_casas.to_s + "\n" +
                     "\t Numero de hoteles: " + @num_hoteles.to_s + "\n\n"
-        end
-        
+        end        
         
     end
     

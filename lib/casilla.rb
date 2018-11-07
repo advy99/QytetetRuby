@@ -63,7 +63,7 @@ module ModeloQytetet
             raise NotImplementedError
         end
         
-        private :titulo
+        private :titulo=
         
         private_class_method :new
 

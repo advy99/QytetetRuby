@@ -3,6 +3,9 @@
 
 #Antonio David Villegas Yeguas
 
+#plugin ruby
+#~/Escritorio/Departamentos/lsi/pdoo/pluginNetbeansRuby/
+
 require_relative "sorpresa"
 require_relative "qytetet"
 

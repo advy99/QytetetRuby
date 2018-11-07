@@ -97,15 +97,17 @@ module ModeloQytetet
         end
         
         def es_casilla_carcel (numero_casilla) #boolean
-            raise NotImplementedError
+            return @carcel.numero_casilla == numero_casilla
         end
         
         def obtener_casilla_final (casilla, desplazamiento) # casilla
-            raise NotImplementedError
+            return @casillas.at(( casilla.numero_casilla + desplazamiento ) % 20);
         end
         
+        
+        # PRE: 0 <= numero_casilla < NUM_CASILLAS
         def obtener_casilla_numero (numero_casilla) # casilla
-            raise NotImplementedError
+            return @casillas.at(numero_casilla)
         end
         
         def to_s()
