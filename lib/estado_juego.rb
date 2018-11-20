@@ -7,6 +7,7 @@ module ModeloQytetet
       JA_CONSORPRESA = :JA_ConSorpresa
       ALGUNJUGADORENBANCARROTA = :AlgunJugadorEnBancarrota
       JA_PUEDECOMPRAROGESTIONAR = :JA_PuedeComprarOGestionar
+      JA_PUEDEGESTIONAR = :JA_PuedeGestionar
       JA_PREPARADO = :JA_Preparado
       JA_ENCARCELADO = :JA_Encarcelado
       JA_ENCARCELADOCONOPCIONDELIBERTAD = :JA_EncarceladoConOpcionDeLibertad

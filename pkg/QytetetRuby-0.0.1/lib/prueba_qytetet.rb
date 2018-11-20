@@ -48,8 +48,23 @@ module ModeloQytetet
             #end
             
             @@juego.inicializar_juego(get_nombre_jugadores)
+       
+            puts "El jugador actual es : " + @@juego.jugador_actual.to_s
+
+            @@juego.mover(1)
             
-            puts @@juego.to_s
+            puts @@juego.jugador_actual.to_s
+
+            @@juego.comprar_titulo_propiedad
+
+            otro = @@juego.jugador_actual
+
+            @@juego.siguiente_jugador
+
+            @@juego.mover(1);
+
+            puts @@juego.jugador_actual.to_s
+            puts otro.to_s
            
             
         end

@@ -44,11 +44,13 @@ module ModeloQytetet
         end
         
         def asignar_propietario(jugador) # titulo_propiedad
-            raise NotImplementedError
+            @titulo.propietario = jugador
+            
+            return @titulo
         end
         
         def pagar_alquiler() # int
-            raise NotImplementedError
+            return @titulo.pagar_alquiler()
         end
         
         def propietario_encarcelado() #boolean

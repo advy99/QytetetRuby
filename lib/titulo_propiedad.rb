@@ -32,43 +32,52 @@ module ModeloQytetet
         
         
         def calcular_coste_cancelar() # int
-            raise NotImplementedError
+        
+            return  (calcular_coste_hipotecar * 1.10).round
+        
         end
         
         def calcular_coste_hipotecar() # int
-            raise NotImplementedError
+            return (@hipoteca_base + (@num_casas * 0.5).round * @hipoteca_base + @num_hoteles * @hipoteca_base)
         end
         
         def calcular_importe_alquiler() # int
-            raise NotImplementedError
+            return @alquiler_base + ( (@num_casas * 0.5).round + @num_hoteles *2)
         end
         
         def calcular_precio_venta() # int
-            raise NotImplementedError
+            return (@precio_compra + (@num_casas + @num_hoteles) * @precio_edificar * @factor_revalorizacion)
         end
         
         def cancelar_hipoteca() # void
-            raise NotImplementedError
+            @hipotecada = false
         end
         
-        def cobrar_alquiler(coste) # void
-            raise NotImplementedError
-        end
+        #def cobrar_alquiler(coste) # void
+        #    raise NotImplementedError
+        #end
         
         def edificar_casa() # void
-            raise NotImplementedError
+            @num_casas = @num_casas + 1
         end
         
         def edificar_hotel() # void
-            raise NotImplementedError
+            @num_casas = @num_casas - 4
+            @num_hoteles = @num_hoteles + 1
         end
         
         def hipotecar() # int
-            raise NotImplementedError
+            @hipotecada = true
+            
+            coste_hipoteca = calcular_coste_hipotecar()
+            
+            return coste_hipoteca
         end
         
         def pagar_alquiler() # int
-            raise NotImplementedError
+            coste_alquiler = calcular_importe_alquiler()
+            
+            @propietario.modificar_saldo(coste_alquiler)
         end
         
         def propietario_encarcelado() # boolean
@@ -76,7 +85,7 @@ module ModeloQytetet
         end
         
         def tengo_propietario() # boolean
-            return @propietario != nil
+            return (@propietario != nil)
         end
         
         
