@@ -18,7 +18,7 @@ module ModeloQytetet
     
     #Pasar una sorpresa a string
     def to_s
-      return "Texto: #{@texto} \n Valor: #{@valor} \n Tipo: #{@tipo}"
+      return "\nTexto: #{@texto} \n Valor: #{@valor} \n Tipo: #{@tipo}"
     end
     
         

@@ -79,7 +79,8 @@ module ModeloQytetet
                 
             
             
-            @mazo.shuffle
+            @mazo = @mazo.shuffle
+            
         end
         
                 
@@ -116,7 +117,7 @@ module ModeloQytetet
         end
         
         def actuar_si_en_casilla_no_edificable() 
-            @estado_juego = EstadoJugador::JA_PUEDEGESTIONAR
+            @estado_juego = EstadoJuego::JA_PUEDEGESTIONAR
             
             casilla_actual = @jugador_actual.casilla_actual
             
@@ -130,7 +131,7 @@ module ModeloQytetet
                if (casilla_actual.tipo == TipoCasilla::JUEZ)
                    encarcelar_jugador()
                else if (casilla_actual.tipo == TipoCasilla::SORPRESA )
-                        carta_actual = @mazo.at(0);
+                        @carta_actual = @mazo.at(0);
                        
                         @mazo.delete_at(0);
                        
@@ -142,6 +143,7 @@ module ModeloQytetet
         
         def aplicar_sorpresa()
             @estado_juego = EstadoJuego::JA_PUEDEGESTIONAR
+            
             
             if (@carta_actual.tipo == TipoSorpresa::SALIRCARCEL)
                 

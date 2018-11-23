@@ -98,6 +98,18 @@ module ModeloQytetet
             puts @@juego.jugadores.join
            
             
+            
+            
+            @@juego.mover(4);
+        
+            puts @@juego.jugador_actual.to_s
+
+            @@juego.aplicar_sorpresa();
+
+
+            puts @@juego.jugadores.join
+
+            
         end
         
         def self.get_nombre_jugadores
