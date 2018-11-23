@@ -218,7 +218,7 @@ module ModeloQytetet
 
             casilla = @tablero.obtener_casilla_numero(numero_casilla)
 
-            titulo = casilla.getTitulo()
+            titulo = casilla.titulo()
 
             cancelada = @jugador_actual.cancelar_hipoteca(titulo)
 
@@ -441,8 +441,10 @@ module ModeloQytetet
                 i = i + 1 
             end
             
+            puts n_jugador + 1 
             
-            @jugador_actual = @jugadores.at( (n_jugador + 1) % @@MAX_JUGADORES )
+            
+            @jugador_actual = @jugadores.at( (n_jugador + 1) % @jugadores.length )
             
             if @jugador_actual.encarcelado
                 @estado_juego = EstadoJuego::JA_ENCARCELADOCONOPCIONDELIBERTAD

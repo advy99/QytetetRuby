@@ -53,9 +53,9 @@ module ModeloQytetet
             return @titulo.pagar_alquiler()
         end
         
-        def propietario_encarcelado() #boolean
-            return @titulo.propietario_encarcelado()
-        end
+        #def propietario_encarcelado() 
+        #    return @titulo.propietario_encarcelado()
+        #end
         
         def soy_edificable() #booelan 
             return @tipo == TipoCasilla::CALLE

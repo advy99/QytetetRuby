@@ -65,6 +65,24 @@ module ModeloQytetet
 
             puts @@juego.jugador_actual.to_s
             puts otro.to_s
+            
+            
+            @@juego.siguiente_jugador
+            puts @@juego.jugador_actual.to_s
+
+            @@juego.hipotecar_propiedad(1);
+
+            puts @@juego.jugador_actual.to_s
+
+
+            @@juego.cancelar_hipoteca(1);
+
+            puts @@juego.jugador_actual.to_s
+
+
+            @@juego.vender_propiedad(1);
+
+            puts @@juego.jugador_actual.to_s
            
             
         end

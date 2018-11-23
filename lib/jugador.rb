@@ -145,7 +145,7 @@ module ModeloQytetet
         def eliminar_de_mis_propiedades(titulo) # : void
             @propiedades.delete(titulo)
             
-            @titulo.propietario = false
+            titulo.propietario = false
         end
         
         def es_de_mi_propiedad(titulo) # : boolean
@@ -157,7 +157,7 @@ module ModeloQytetet
         #end
         
         def hipotecar_propiedad(titulo) # : boolean
-            coste_hipoteca = @titulo.hipotecar()
+            coste_hipoteca = titulo.hipotecar()
             
             modificar_saldo(coste_hipoteca)
         end
@@ -234,7 +234,7 @@ module ModeloQytetet
             
             eliminar_de_mis_propiedades(titulo)
             
-            precio_venta = @titulo.calcular_precio_venta()
+            precio_venta = titulo.calcular_precio_venta()
             
             modificar_saldo(precio_venta)
             
