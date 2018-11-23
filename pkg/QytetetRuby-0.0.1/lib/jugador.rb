@@ -179,10 +179,12 @@ module ModeloQytetet
             
             for p in propiedades
                 capital += p.precio_compra + p.precio_edificar*(p.num_casas+p.num_hoteles)
-            end
             
-            if p.hipotecada
-                capital -= p.hipoteca_base
+            
+                if p.hipotecada
+                    capital -= p.hipoteca_base
+                end
+            
             end
             
             return capital
@@ -203,7 +205,7 @@ module ModeloQytetet
         
         def pagar_alquiler() # : void
             coste_alquiler = @casilla_actual.pagar_alquiler()
-            
+
             modificar_saldo(-coste_alquiler)
         end
         
@@ -248,7 +250,8 @@ module ModeloQytetet
 
             texto += "\nNombre: " + @nombre + "\n" +
                      "Encarcelado: " + @encarcelado.to_s + "\n" +
-                     "Saldo: " + @saldo.to_s + "\n\n"
+                     "Saldo: " + @saldo.to_s + "\n" +
+                     "Capital: " + obtener_capital.to_s + "\n\n"
 
             if @carta_libertad != nil
               texto += @carta_libertad.to_s

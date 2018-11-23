@@ -78,6 +78,8 @@ module ModeloQytetet
             coste_alquiler = calcular_importe_alquiler()
             
             @propietario.modificar_saldo(coste_alquiler)
+            
+            return coste_alquiler
         end
         
         def propietario_encarcelado() # boolean

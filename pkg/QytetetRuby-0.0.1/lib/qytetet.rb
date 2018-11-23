@@ -90,6 +90,7 @@ module ModeloQytetet
         
         def actuar_si_en_casilla_edificable()
             debo_pagar = @jugador_actual.debo_pagar_alquiler()
+          
             
             if (debo_pagar)
                 @jugador_actual.pagar_alquiler()

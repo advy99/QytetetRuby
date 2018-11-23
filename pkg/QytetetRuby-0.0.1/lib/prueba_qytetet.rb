@@ -60,6 +60,12 @@ module ModeloQytetet
             otro = @@juego.jugador_actual
 
             @@juego.siguiente_jugador
+            
+            
+            
+            puts @@juego.jugador_actual.to_s
+            
+            
 
             @@juego.mover(1);
 
@@ -70,19 +76,26 @@ module ModeloQytetet
             @@juego.siguiente_jugador
             puts @@juego.jugador_actual.to_s
 
-            @@juego.hipotecar_propiedad(1);
+            @@juego.hipotecar_propiedad(1)
 
             puts @@juego.jugador_actual.to_s
 
 
-            @@juego.cancelar_hipoteca(1);
+            @@juego.cancelar_hipoteca(1)
 
             puts @@juego.jugador_actual.to_s
 
 
-            @@juego.vender_propiedad(1);
+            @@juego.vender_propiedad(1)
 
             puts @@juego.jugador_actual.to_s
+            
+            
+            puts "----------------------------------------------------------\n\n"
+            
+            @@juego.obtener_ranking()
+            
+            puts @@juego.jugadores.join
            
             
         end
