@@ -7,26 +7,26 @@ require_relative "tipo_casilla"
 module ModeloQytetet
     class Casilla
         
-        attr_accessor :titulo
+        attr_accessor :titulo, :coste
         
-        attr_reader :numero_casilla, :coste, :tipo
+        attr_reader :numero_casilla, :tipo
         
                 
-        def initialize(n_casilla, n_coste, n_tipo, n_titulo )
+        def initialize(n_casilla, n_coste, n_tipo )
             @numero_casilla = n_casilla
             @coste = n_coste
             @tipo = n_tipo
-            @titulo = n_titulo
+            #@titulo = n_titulo
         end
         
-        def self.crear_casilla(n_casilla, n_coste, n_tipo)
-            new(n_casilla, n_coste, n_tipo, nil)
-        end
+        #def self.crear_casilla(n_casilla, n_coste, n_tipo)
+        #    new(n_casilla, n_coste, n_tipo, nil)
+        #end
         
-        def self.crear_casilla_calle(n_casilla, n_titulo)
-            new(n_casilla, n_titulo.precio_compra,
-                     TipoCasilla::CALLE, n_titulo)
-        end
+        #def self.crear_casilla_calle(n_casilla, n_titulo)
+        #    new(n_casilla, n_titulo.precio_compra,
+        #             TipoCasilla::CALLE, n_titulo)
+        #end
     
         def to_s
             texto = ""
@@ -35,39 +35,38 @@ module ModeloQytetet
                      "Tipo de casilla: " + @tipo.to_s + "\n" +
                      "Coste: " + @coste.to_s + "\n "
 
-            if @tipo == TipoCasilla::CALLE and @titulo != nil
-                texto += @titulo.to_s
-            end
+            #if @tipo == TipoCasilla::CALLE and @titulo != nil
+            #    texto += @titulo.to_s
+            #end
             
 
             return texto;
         end
         
-        def asignar_propietario(jugador) # titulo_propiedad
-            @titulo.propietario = jugador
-            
-            return @titulo
-        end
+        #def asignar_propietario(jugador) # titulo_propiedad
+        #    @titulo.propietario = jugador
+        #    
+        #    return @titulo
+        #end
         
-        def pagar_alquiler() # int
-            return @titulo.pagar_alquiler()
-        end
+        #def pagar_alquiler() # int
+        #    return @titulo.pagar_alquiler()
+        #end
         
         #def propietario_encarcelado() 
         #    return @titulo.propietario_encarcelado()
         #end
         
         def soy_edificable() #booelan 
-            return @tipo == TipoCasilla::CALLE
+            return false
         end
         
-        def tengo_propietario() #boolean
-            return @titulo.tengo_propietario()
-        end
+        #def tengo_propietario() boolean
+        #    return @titulo.tengo_propietario()
+        #end
         
-        private :titulo=
         
-        private_class_method :new
+        #private_class_method :new
 
          
     end

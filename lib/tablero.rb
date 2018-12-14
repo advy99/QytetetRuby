@@ -4,6 +4,7 @@
 
 require_relative "titulo_propiedad"
 require_relative "casilla"
+require_relative "calle"
 
 module ModeloQytetet
     class Tablero
@@ -71,26 +72,26 @@ module ModeloQytetet
 
 
 
-            @casillas << (Casilla.crear_casilla(0,1000, TipoCasilla::SALIDA));
-            @casillas << (Casilla.crear_casilla_calle(1, t1));
-            @casillas << (Casilla.crear_casilla_calle(2, t2));
-            @casillas << (Casilla.crear_casilla_calle(3, t3));
-            @casillas << (Casilla.crear_casilla(4, 0, TipoCasilla::SORPRESA));
-            @casillas << (Casilla.crear_casilla_calle(5, t4));
-            @casillas << (Casilla.crear_casilla(6, 700, TipoCasilla::IMPUESTO));
-            @casillas << (Casilla.crear_casilla_calle(7, t5));
-            @casillas << (Casilla.crear_casilla_calle(8, t6));
-            @casillas << (Casilla.crear_casilla(9, 0, TipoCasilla::CARCEL));
-            @casillas << (Casilla.crear_casilla_calle(10, t7));
-            @casillas << (Casilla.crear_casilla_calle(11, t8));
-            @casillas << (Casilla.crear_casilla(12, 0, TipoCasilla::SORPRESA));
-            @casillas << (Casilla.crear_casilla_calle(13, t9));
-            @casillas << (Casilla.crear_casilla(14, 0, TipoCasilla::PARKING));
-            @casillas << (Casilla.crear_casilla_calle(15, t10));
-            @casillas << (Casilla.crear_casilla(16, 0, TipoCasilla::SORPRESA));
-            @casillas << (Casilla.crear_casilla_calle(17, t11));
-            @casillas << (Casilla.crear_casilla(18, 0, TipoCasilla::JUEZ));
-            @casillas << (Casilla.crear_casilla_calle(19, t12));
+            @casillas << (Casilla.new(0,1000, TipoCasilla::SALIDA));
+            @casillas << (Calle.new(1, t1));
+            @casillas << (Calle.new(2, t2));
+            @casillas << (Calle.new(3, t3));
+            @casillas << (Casilla.new(4, 0, TipoCasilla::SORPRESA));
+            @casillas << (Calle.new(5, t4));
+            @casillas << (Casilla.new(6, 700, TipoCasilla::IMPUESTO));
+            @casillas << (Calle.new(7, t5));
+            @casillas << (Calle.new(8, t6));
+            @casillas << (Casilla.new(9, 0, TipoCasilla::CARCEL));
+            @casillas << (Calle.new(10, t7));
+            @casillas << (Calle.new(11, t8));
+            @casillas << (Casilla.new(12, 0, TipoCasilla::SORPRESA));
+            @casillas << (Calle.new(13, t9));
+            @casillas << (Casilla.new(14, 0, TipoCasilla::PARKING));
+            @casillas << (Calle.new(15, t10));
+            @casillas << (Casilla.new(16, 0, TipoCasilla::SORPRESA));
+            @casillas << (Calle.new(17, t11));
+            @casillas << (Casilla.new(18, 0, TipoCasilla::JUEZ));
+            @casillas << (Calle.new(19, t12));
             
             @carcel = @casillas[9]
 

@@ -77,6 +77,12 @@ module ModeloQytetet
             @mazo << Sorpresa.new("Encuentras un atajo en el camino.",
                     18, TipoSorpresa::IRACASILLA)
                 
+            @mazo << Sorpresa.new("Tienes buen ojo para los negocios " +
+                 "inmobiliarios, te dedicas a ello  ", 3000, TipoSorpresa::CONVERTIRME)
+        
+            @mazo << Sorpresa.new("Te aburres y decides dedicarte al sector inmobiliario",
+                               5000, TipoSorpresa::CONVERTIRME)
+            
             
             
             @mazo = @mazo.shuffle
@@ -177,7 +183,7 @@ module ModeloQytetet
                         
                 elsif (@carta_actual.tipo == TipoSorpresa::PORCASAHOTEL)
                         
-                        canridad = @carta_actual.valor
+                        cantidad = @carta_actual.valor
                         
                         numero_total = @jugador_actual.cuantas_casas_hoteles_tengo()
                         
@@ -208,7 +214,17 @@ module ModeloQytetet
                             end
                         end
                         
-                                
+                     
+                elsif (@carta_actual.tipo == TipoSorpresa::CONVERTIRME)    
+                    posicion = @jugadores.index(@jugador_actual);
+                
+                    especulador = @jugador_actual.convertirme(@carta_actual.valor);
+
+                    @jugadores[posicion] = especulador
+
+                    @jugador_actual = especulador
+                    
+                    
                 end         
 
                 
@@ -271,7 +287,7 @@ module ModeloQytetet
         end
         
         def encarcelar_jugador()# : void
-            if (!@jugador_actual.tengo_carta_libertad())
+            if (!@jugador_actual.debo_ir_a_carcel())
                 casilla_carcel = @tablero.carcel
 
                 @tablero.ir_a_carcel(casilla_carcel)
@@ -318,7 +334,7 @@ module ModeloQytetet
         def inicializar_jugadores(nombres) # : void
             
             for n in nombres
-                @jugadores << Jugador.new(n)
+                @jugadores << Jugador.nuevo(n)
             end
 
         end
@@ -502,6 +518,7 @@ module ModeloQytetet
                 :inicializar_jugadores, :inicializar_tablero, :salida_jugadores,
                 :carta_actual
         
+        private_class_method :new
         
     end
 

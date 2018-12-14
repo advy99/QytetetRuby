@@ -5,7 +5,7 @@
 module ModeloQytetet
     class Jugador
         
-        attr_reader :saldo, :nombre, :propiedades, :saldo
+        attr_reader :saldo, :nombre, :propiedades
                   
         attr_accessor :carta_libertad, :casilla_actual, :encarcelado
         
@@ -18,6 +18,21 @@ module ModeloQytetet
             @casilla_actual = nil
             
             @carta_libertad = nil
+        end
+        
+        def self.nuevo(n_nombre)
+            new(n_nombre)
+        end
+        
+        def copia(otro_jugador)
+            nuevo = Jugador.nuevo(otro_jugador.nombre)
+            
+            nuevo.saldo = otro_jugador.saldo
+            nuevo.propiedades = otro_jugador.propiedades
+            nuevo.carta_libertad = otro_jugador.carta_libertad
+            nuevo.casilla_actual = otro_jugador.casilla_actual
+            nuevo.encarcelado = otro_jugador.encarcelado
+           
         end
         
         def cancelar_hipoteca(titulo) # : boolean
@@ -37,17 +52,26 @@ module ModeloQytetet
             return cancelada
         end
         
+        def convertirme(fianza) #especulador
+            
+            especulador = Especulador.new(self, fianza)
+            
+            return especulador
+            
+            
+        end
+        
         def comprar_titulo_propiedad() # : boolean
             comprado = false
             
             coste_compra = @casilla_actual.coste
             
             if (coste_compra < @saldo)
-                titulo = @casilla_actual.asignar_propietario(self)
+                @casilla_actual.asignar_propietario(self)
                 
                 comprado = true
                 
-                @propiedades << titulo
+                @propiedades << @casilla_actual.titulo
                 
                 modificar_saldo(-coste_compra)
             end
@@ -64,6 +88,10 @@ module ModeloQytetet
             end
             
             return total
+        end
+        
+        def debo_ir_a_carcel() # boolean
+            return !tengo_carta_libertad
         end
         
         def debo_pagar_alquiler() # : boolean
@@ -97,20 +125,17 @@ module ModeloQytetet
         end
         
         def edificar_casa(titulo) # : boolean
-            num_casas = titulo.num_casas
             
             edificada = false
             
-            if (num_casas < 4)
-                coste_edificar_casa = titulo.precio_edificar
+            if puedo_edificar_casa
                 
-                tengo_saldo = tengo_saldo(coste_edificar_casa)
+                titulo.edificar_casa()
                 
-                if(tengo_saldo)
-                    titulo.edificar_casa()
-                    
-                    edificada = true
-                end
+                modificar_saldo(-titulo.precio_edificar)
+
+                edificada = true
+     
                 
             end
             
@@ -120,22 +145,17 @@ module ModeloQytetet
         def edificar_hotel(titulo) # : boolean
             edificado = false;
         
-            num_casas = titulo.num_casas
-            num_hoteles = titulo.num_hoteles
+            
 
-            if num_hoteles < 4 and num_casas > 4
+            if puedo_edificar_hotel
 
-                coste_edificar_hotel = titulo.precio_compra
+              
+                titulo.edificar_hotel()
 
-                tengo_saldo = tengo_saldo(coste_edificar_hotel)
+                modificar_saldo(-titulo.precio_edificar)
 
-                if tengo_saldo
-                    titulo.edificar_hotel()
+                edificado = true
 
-                    modificar_saldo(-coste_edificar_hotel)
-
-                    edificado = true
-                end
 
             end
 
@@ -151,6 +171,7 @@ module ModeloQytetet
         def es_de_mi_propiedad(titulo) # : boolean
             return @propiedades.include?(titulo)
         end
+        
         
         #def estoy_en_calle_libre() # : boolean
         #    raise NotImplementedError
@@ -223,6 +244,19 @@ module ModeloQytetet
             end
         end
         
+        
+        def puedo_edificar_casa(titulo)
+            puedo = tengo_saldo(titulo.precio_edificar) && titulo.num_casas < 4
+            
+            return puedo
+        end
+        
+        def puedo_edificar_hotel(titulo)
+            puedo = tengo_saldo(titulo.precio_edificar) && titulo.num_casas > 4 && titulo.num_hoteles < 4
+            
+            return puedo
+        end
+        
         def tengo_carta_libertad() # : boolean
             return @cartal_libertad != nil
         end
@@ -277,8 +311,13 @@ module ModeloQytetet
             otroJugador.obtener_capital <=> obtener_capital
         end
                 
-        private :eliminar_de_mis_propiedades, :es_de_mi_propiedad,
-                :tengo_saldo
+        private :eliminar_de_mis_propiedades, :es_de_mi_propiedad
+        
+        protected :copia, :convertirme, :debo_ir_a_carcel, :pagar_impuesto,
+                  :puedo_edificar_casa, :puedo_edificar_hotel, :tengo_saldo
+        
+        
+        private_class_method :new
         
     end
 end
