@@ -7,6 +7,7 @@ require_relative "tablero"
 require_relative "dado"
 require_relative "jugador"
 require_relative "estado_juego"
+require_relative "metodo_salir_carcel"
 
 module ModeloQytetet
    
@@ -93,6 +94,7 @@ module ModeloQytetet
         def inicializar_tablero
             @tablero = Tablero.new
         end
+       
         
         
         def actuar_si_en_casilla_edificable()
@@ -370,7 +372,8 @@ module ModeloQytetet
             
             c_final = @tablero.obtener_casilla_final(@jugador_actual.casilla_actual, v_dado)
         
-            mover(c_final)
+          
+            mover(c_final.numero_casilla)
             
         end
         
@@ -434,6 +437,10 @@ module ModeloQytetet
         
         def obtener_saldo_jugador_actual() # : int
             return @jugador_actual.saldo
+        end
+        
+        def obtener_valor_dado
+            return @dado.valor
         end
         
         def salida_jugadores() # : void
@@ -516,7 +523,7 @@ module ModeloQytetet
                 
         private :encarcelar_jugador, :inicializar_cartas_sorpresa,
                 :inicializar_jugadores, :inicializar_tablero, :salida_jugadores,
-                :carta_actual
+                :carta_actual=
         
         private_class_method :new
         

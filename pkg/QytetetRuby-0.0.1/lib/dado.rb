@@ -29,8 +29,6 @@ module ModeloQytetet
             return texto
         end
         
-        
-        private :valor
-        
+                
     end
 end

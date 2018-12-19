@@ -21,7 +21,7 @@ module ModeloQytetet
         
         def debo_ir_a_carcel
             
-            debo = super.debo_ir_a_carcel() && pagar_fianza()
+            debo = super.debo_ir_a_carcel() && !pagar_fianza()
             
             return debo
             
@@ -51,7 +51,7 @@ module ModeloQytetet
         end
         
         def puedo_edificar_hotel(titulo)
-            puedo = tengo_saldo(titulo.precio_edificar) && titulo.num_casas > 4 && titulo.num_hoteles < 8
+            puedo = tengo_saldo(titulo.precio_edificar) && titulo.num_casas >= 4 && titulo.num_hoteles < 8
             
             return puedo
         end

@@ -34,40 +34,40 @@ module ModeloQytetet
         def inicializar
             @casillas = Array.new
             
-            t1  = TituloPropiedad.new( "Calle", 713, 207,
+            t1  = TituloPropiedad.new( "DEIIT", 713, 207,
                                                  1.3, 3000, 300);
         
-            t2  = TituloPropiedad.new( "Avenida", 1300, 400,
+            t2  = TituloPropiedad.new( "OSL", 1300, 400,
                                                  1.9, 4000, 600);
         
-            t3  = TituloPropiedad.new( "Carretera", 599, 150,
+            t3  = TituloPropiedad.new( "UGR", 599, 150,
                                                  0.9, 1400, 1975);
         
-            t4  = TituloPropiedad.new( "Rotonda", 1720, 450,
+            t4  = TituloPropiedad.new( "Matematica Aplicada", 1720, 450,
                                                  1, 4000, 1999);
         
-            t5  = TituloPropiedad.new( "Acera", 502, 130,
+            t5  = TituloPropiedad.new( "EIO", 502, 130,
                                                  0.6, 900, 800);
         
-            t6  = TituloPropiedad.new( "CarrilBici", 912, 234,
+            t6  = TituloPropiedad.new( "ETC", 912, 234,
                                                  0.8, 1800, 1120);
         
-            t7  = TituloPropiedad.new( "Metro", 3290, 700,
+            t7  = TituloPropiedad.new( "TSCS", 3290, 700,
                                                  2.5, 6000, 2800);
         
-            t8  = TituloPropiedad.new( "Bus", 560, 140,
+            t8  = TituloPropiedad.new( "Analisis Matematico", 560, 140,
                                                  2.9, 1200, 600);
         
-            t9  = TituloPropiedad.new( "Taxi", 1543, 320,
+            t9  = TituloPropiedad.new( "Algebra", 1543, 320,
                                                  1.2, 3500, 2000);
 
-            t10 = TituloPropiedad.new( "Coche", 3198, 690,
+            t10 = TituloPropiedad.new( "DECSAI", 3198, 690,
                                                  2.2, 10000, 1790);
 
-            t11 = TituloPropiedad.new( "Tranvia", 587, 100,
+            t11 = TituloPropiedad.new( "LSI", 587, 100,
                                                  0.2, 10000, 400);
 
-            t12 = TituloPropiedad.new( "Limusina", 890, 300,
+            t12 = TituloPropiedad.new( "ATC", 890, 300,
                                                  3.2, 10000, 200);
 
 

@@ -24,14 +24,15 @@ module ModeloQytetet
             new(n_nombre)
         end
         
-        def copia(otro_jugador)
-            nuevo = Jugador.nuevo(otro_jugador.nombre)
+        def self.copia(otro_jugador)
+            new(otro_jugador.nombre)
             
-            nuevo.saldo = otro_jugador.saldo
-            nuevo.propiedades = otro_jugador.propiedades
-            nuevo.carta_libertad = otro_jugador.carta_libertad
-            nuevo.casilla_actual = otro_jugador.casilla_actual
-            nuevo.encarcelado = otro_jugador.encarcelado
+            
+            @saldo = otro_jugador.saldo
+            @propiedades = otro_jugador.propiedades
+            @carta_libertad = otro_jugador.carta_libertad
+            @casilla_actual = otro_jugador.casilla_actual
+            @encarcelado = otro_jugador.encarcelado
            
         end
         
@@ -252,7 +253,7 @@ module ModeloQytetet
         end
         
         def puedo_edificar_hotel(titulo)
-            puedo = tengo_saldo(titulo.precio_edificar) && titulo.num_casas > 4 && titulo.num_hoteles < 4
+            puedo = tengo_saldo(titulo.precio_edificar) && titulo.num_casas >= 4 && titulo.num_hoteles < 4
             
             return puedo
         end
@@ -313,7 +314,9 @@ module ModeloQytetet
                 
         private :eliminar_de_mis_propiedades, :es_de_mi_propiedad
         
-        protected :copia, :convertirme, :debo_ir_a_carcel, :pagar_impuesto,
+        # copia, pagar_impuesto, :debo_ir_a_carcel no pueden ser protected
+        
+        protected :convertirme,
                   :puedo_edificar_casa, :puedo_edificar_hotel, :tengo_saldo
         
         
