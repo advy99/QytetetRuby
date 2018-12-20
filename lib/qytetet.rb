@@ -6,6 +6,7 @@ require_relative "sorpresa"
 require_relative "tablero"
 require_relative "dado"
 require_relative "jugador"
+require_relative "especulador"
 require_relative "estado_juego"
 require_relative "metodo_salir_carcel"
 
@@ -43,6 +44,7 @@ module ModeloQytetet
         #Inicializamos el mazo con sorpresas
         def inicializar_cartas_sorpresa
             
+           
             @mazo << Sorpresa.new("Un fan anónimo ha pagado tu fianza. Sales " +
                  "de la cárcel", 0, TipoSorpresa::SALIRCARCEL)
         
@@ -58,7 +60,7 @@ module ModeloQytetet
 
             @mazo << Sorpresa.new("No era tu cumpleaños, ¡mentiroso!. Debes " +
                    "darle a los demás lo que te han dado con intereses, " + 
-                   "300 euros a cada uno", -300, TipoSorpresa::PORJUGADOR)
+                   "300 euros a cada uno", 300, TipoSorpresa::PORJUGADOR)
              
             @mazo << Sorpresa.new("Eres muy emprendedor, obtienes 100 euros "+
                    "por cada casa y hotel que poseas",
@@ -76,13 +78,14 @@ module ModeloQytetet
                     "Ve a la casilla de salida.", 0, TipoSorpresa::IRACASILLA)
 
             @mazo << Sorpresa.new("Encuentras un atajo en el camino.",
-                    18, TipoSorpresa::IRACASILLA)
+                    15, TipoSorpresa::IRACASILLA)
                 
             @mazo << Sorpresa.new("Tienes buen ojo para los negocios " +
                  "inmobiliarios, te dedicas a ello  ", 3000, TipoSorpresa::CONVERTIRME)
         
             @mazo << Sorpresa.new("Te aburres y decides dedicarte al sector inmobiliario",
                                5000, TipoSorpresa::CONVERTIRME)
+            
             
             
             
@@ -284,7 +287,7 @@ module ModeloQytetet
                 @estado_juego = EstadoJuego::JA_PUEDEGESTIONAR
             end
             
-            return edificada
+            return edificado
             
         end
         
@@ -409,7 +412,7 @@ module ModeloQytetet
             
             for c in @tablero.casillas
                 if @jugador_actual.propiedades.include?(c.titulo)
-                    pro << c.num_casilla
+                    pro << c.numero_casilla
                 end
             end
             
@@ -466,9 +469,7 @@ module ModeloQytetet
                 
                 i = i + 1 
             end
-            
-            puts n_jugador + 1 
-            
+                        
             
             @jugador_actual = @jugadores.at( (n_jugador + 1) % @jugadores.length )
             

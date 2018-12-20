@@ -2,22 +2,27 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
+require_relative "jugador"
+
 module ModeloQytetet
     class Especulador < Jugador
         
-        attr_accessor :fianza
+        attr_reader :fianza
         
         def initialize(jugador, fianza)
-            super(jugador)
+            copia(jugador)
             @fianza = fianza
+        
         end
         
-        def copia(jugador, fianza)
-            super(jugador)
-            @fianza = fianza
+        #def self.copia(jugador, fianza)
+        #    super(jugador)
             
-            return self
-        end
+        #    @fianza = fianza
+            
+        #end
+        
+        
         
         def debo_ir_a_carcel
             
@@ -58,14 +63,16 @@ module ModeloQytetet
         
         
         def convertirme(fianza)
+            @fianza = fianza
             return self
         end
         
         
         def to_s
             
-            texto = "\nFianza: " + @fianza + "\n"
-            texto = texto + super.to_s()
+            texto = "\nFianza: " + @fianza.to_s
+            texto += super.to_s()
+            
             
             return texto
         end
@@ -74,8 +81,7 @@ module ModeloQytetet
         private :fianza, :pagar_fianza
         
         
-        protected :pagar_impuesto, :copia, :convertirme, :debo_ir_a_carcel,
-                  :puedo_edificar_casa, :puedo_edificar_hotel
+        
         
     end
 end

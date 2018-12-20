@@ -2,6 +2,9 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
+
+require_relative "jugador"
+
 module ModeloQytetet
     class Jugador
         
@@ -24,10 +27,12 @@ module ModeloQytetet
             new(n_nombre)
         end
         
-        def self.copia(otro_jugador)
-            new(otro_jugador.nombre)
+        def copia(otro_jugador)
             
+            #new(otro_jugador.nombre)
+
             
+            @nombre = otro_jugador.nombre
             @saldo = otro_jugador.saldo
             @propiedades = otro_jugador.propiedades
             @carta_libertad = otro_jugador.carta_libertad
@@ -129,7 +134,7 @@ module ModeloQytetet
             
             edificada = false
             
-            if puedo_edificar_casa
+            if puedo_edificar_casa(titulo)
                 
                 titulo.edificar_casa()
                 
@@ -148,7 +153,7 @@ module ModeloQytetet
         
             
 
-            if puedo_edificar_hotel
+            if puedo_edificar_hotel(titulo)
 
               
                 titulo.edificar_hotel()
@@ -286,7 +291,7 @@ module ModeloQytetet
             texto += "\nNombre: " + @nombre + "\n" +
                      "Encarcelado: " + @encarcelado.to_s + "\n" +
                      "Saldo: " + @saldo.to_s + "\n" +
-                     "Capital: " + obtener_capital.to_s + "\n\n"
+                     "Capital: " + obtener_capital().to_s + "\n\n"
 
             if @carta_libertad != nil
               texto += @carta_libertad.to_s
@@ -314,13 +319,12 @@ module ModeloQytetet
                 
         private :eliminar_de_mis_propiedades, :es_de_mi_propiedad
         
-        # copia, pagar_impuesto, :debo_ir_a_carcel no pueden ser protected
+        # copia, pagar_impuesto, :debo_ir_a_carcel, :convertirme no pueden ser protected
         
-        protected :convertirme,
-                  :puedo_edificar_casa, :puedo_edificar_hotel, :tengo_saldo
+        protected :puedo_edificar_casa, :puedo_edificar_hotel, :tengo_saldo
         
         
-        private_class_method :new
+        #private_class_method :new
         
     end
 end

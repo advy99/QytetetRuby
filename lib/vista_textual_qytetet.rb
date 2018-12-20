@@ -28,7 +28,7 @@ module VistaTextualQytetet
                 return valor_devolver
             else
                 for i in casillas_validas
-                    puts " \n " + i + " \n "
+                    puts " \n " + i.to_s + " \n "
                     casillas << i.to_s
 
                 end
@@ -68,12 +68,12 @@ module VistaTextualQytetet
         end
         
         def leer_valor_correcto(valores_correctos) #string
+
+            valor = gets.chomp
             
-            valor = gets
-            
-            while (valores_correctos.include? valor)
+            until valores_correctos.include?(valor)
                 puts "\nERROR: No has introducido un valor correcto, vuelve a probar.\n"
-                valor = gets
+                valor = gets.chomp
             end
             
             return valor

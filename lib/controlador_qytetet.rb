@@ -141,11 +141,11 @@ module ControladorQytetet
             elsif opcion_elegida == 12
                 @modelo.obtener_ranking()
             elsif opcion_elegida == 13
-                exit()
+                exit(true)
             elsif opcion_elegida == 14
                 a_devolver = @modelo.jugador_actual.to_s
             elsif opcion_elegida == 15
-                a_devolver = @modelo.jugadores.to_s
+                a_devolver = @modelo.jugadores.join
             elsif opcion_elegida == 16
                 a_devolver = @modelo.tablero.to_s
             end
@@ -163,15 +163,15 @@ module ControladorQytetet
             
             opcion = OpcionMenu[opcion_menu]
 
-            if opcion == OpcionMenu::CANCELARHIPOTECA
+            if opcion == :CANCELARHIPOTECA
                 casillas_validas = @modelo.obtener_propiedades_jugador_segun_estado_hipoteca(true)
-            elsif opcion == OpcionMenu::COMPRARTITULOPROPIEDAD
+            elsif opcion == :COMPRARTITULOPROPIEDAD
                 casillas_validas << @modelo.obtener_casilla_jugador_actual.numero_casilla
-            elsif opcion == OpcionMenu::EDIFICARCASA or opcion == OpcionMenu::EDIFICARHOTEL
+            elsif opcion == :EDIFICARCASA or opcion == :EDIFICARHOTEL
                 casillas_validas = @modelo.obtener_propiedades_jugador
-            elsif opcion == OpcionMenu::HIPOTECARPROPIEDAD
+            elsif opcion == :HIPOTECARPROPIEDAD
                 casillas_validas = @modelo.obtener_propiedades_jugador_segun_estado_hipoteca(false)
-            elsif opcion == OpcionMenu::VENDERPROPIEDAD
+            elsif opcion == :VENDERPROPIEDAD
                 casillas_validas = @modelo.obtener_propiedades_jugador
             end
             
