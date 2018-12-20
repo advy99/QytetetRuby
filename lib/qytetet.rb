@@ -292,7 +292,7 @@ module ModeloQytetet
         end
         
         def encarcelar_jugador()# : void
-            if (!@jugador_actual.debo_ir_a_carcel())
+            if (@jugador_actual.debo_ir_a_carcel())
                 casilla_carcel = @tablero.carcel
 
                 @tablero.ir_a_carcel(casilla_carcel)
