@@ -90,6 +90,12 @@ module ModeloQytetet
             return (@propietario != nil)
         end
         
+        #   no nos dicen que hagamos este metodo, pero es la unica forma y el unico lugar que tengo
+        #de poner las casas y los hoteles a 0 cuando vendo una propiedad
+        def vendido
+            @num_casas = 0
+            @num_hoteles = 0
+        end
         
         def to_s()
             return "Titulo propiedad: \n" +

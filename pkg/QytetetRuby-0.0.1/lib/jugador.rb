@@ -275,6 +275,7 @@ module ModeloQytetet
             titulo = casilla.titulo()
             
             eliminar_de_mis_propiedades(titulo)
+            titulo.vendido
             
             precio_venta = titulo.calcular_precio_venta()
             
