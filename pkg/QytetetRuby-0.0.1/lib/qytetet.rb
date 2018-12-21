@@ -116,7 +116,7 @@ module ModeloQytetet
             
             tengo_propietario = casilla.tengo_propietario()
             
-            if(estado_juego != EstadoJuego::ALGUNJUGADORENBANCARROTA)
+            if(@estado_juego != EstadoJuego::ALGUNJUGADORENBANCARROTA)
                 if (tengo_propietario)
                     @estado_juego = EstadoJuego::JA_PUEDEGESTIONAR
                 else
@@ -330,9 +330,6 @@ module ModeloQytetet
             inicializar_cartas_sorpresa
             salida_jugadores
             
-            
-            @jugador_actual = @jugadores.at(0)
-
 
         end
         
@@ -452,7 +449,7 @@ module ModeloQytetet
             end
             
             @jugador_actual = @jugadores.at(rand(@jugadores.length))
-            
+                        
             
             @estado_juego = EstadoJuego::JA_PREPARADO
             

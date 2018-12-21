@@ -171,7 +171,7 @@ module ModeloQytetet
         def eliminar_de_mis_propiedades(titulo) # : void
             @propiedades.delete(titulo)
             
-            titulo.propietario = false
+            titulo.propietario = nil
         end
         
         def es_de_mi_propiedad(titulo) # : boolean
