@@ -1,2 +1,2 @@
 # QytetetJava
-Practica PDOO: Qytetet (juego basado en monopoly)..
+Practica PDOO: Qytetet (juego basado en monopoly).
